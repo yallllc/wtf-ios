@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HTML5 Video Media Queries - Walter Ebert</title>
+  </head>
+
+  <body>
+    <div id="playground-container">
+      <main id="content" class="h-entry">
+        <style>
+          output {
+            display: block;
+            font-weight: bold;
+            margin: 1rem auto;
+          }
+        </style>
+
+        <h1>HTML5 Video Media Queries</h1>
+
+        <h2>autoplay muted playsinline <em>controls</em></h2>
+        <video id="video" autoplay muted playsinline controls>
+          <source
+            src="https://upload.wikimedia.org/wikipedia/commons/d/da/Cat_scratching.webm"
+            type="video/webm"
+            media="(max-width:480px)"
+          />
+          <source
+            src="https://upload.wikimedia.org/wikipedia/commons/0/01/UglyCar.webm"
+            type="video/webm"
+          />
+        </video>
+
+        <output id="currentSrc"></output>
+
+        <h2>autoplay muted playsinline</h2>
+        <video id="video2" autoplay muted playsinline controls>
+          <source
+            src="https://upload.wikimedia.org/wikipedia/commons/d/da/Cat_scratching.webm"
+            type="video/webm"
+            media="(max-width:480px)"
+          />
+          <source
+            src="https://upload.wikimedia.org/wikipedia/commons/0/01/UglyCar.webm"
+            type="video/webm"
+          />
+        </video>
+
+        <output id="currentSrc2"></output>
+
+        <p>
+          Videos:
+          <a href="https://commons.wikimedia.org/wiki/File:UglyCar.webm"
+            >Ugly Car</a
+          >,
+          <a href="https://commons.wikimedia.org/wiki/File:Cat_scratching.webm"
+            >Cat Scratching</a
+          >
+        </p>
+
+        <script>
+          (function () {
+            var video = document.getElementById("video");
+            var currentSrc = document.getElementById("currentSrc");
+            video.addEventListener("play", function () {
+              currentSrc.innerText =
+                "Playing: " + this.currentSrc.split("/").pop();
+            });
+          })();
+
+          (function () {
+            var video = document.getElementById("video2");
+            var currentSrc = document.getElementById("currentSrc2");
+            video.addEventListener("play", function () {
+              currentSrc.innerText =
+                "Playing: " + this.currentSrc.split("/").pop();
+            });
+          })();
+        </script>
+      </main>
+    </div>
+    <!-- #playground-container -->
+  </body>
+</html>
